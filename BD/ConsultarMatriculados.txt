@@ -1,0 +1,27 @@
+
+/*consulta matriculados*/
+select  tabla.nombre_estudiante,tabla.plan_estudiante,tabla.nombre_asignatura,tabla.idgrupo,tabla.semestre,tabla.nombre_docente,tabla.plan_docente,tabla.periodo from 
+(select e.nombre as nombre_estudiante,pe.idplan as plan_estudiante, a.nombre as nombre_asignatura,g.idgrupo,agpd.semestre,d.nombre as nombre_docente,p.idplan as plan_docente,agpd.periodo,count(d.iddocente)
+from matricula m
+inner join ASIGNATURA_GRUPO_PLAN_DOCENTE agpd
+on m.IDASIGNATURA_GRUPO_PLAN_DOCENTE= agpd.IDASIGNATURA_GRUPO_PLAN_DOCENTE
+inner join estudiante_plan ep
+on ep.idestudiante_plan = m.idestudiante_plan
+inner join estudiante e
+on ep.idestudiante = e.idestudiante
+inner join plan pe
+on pe.idplan =ep.idplan
+inner join PLAN_DOCENTE pd
+on pd.idplan_docente = agpd.idplan_docente
+inner join docente d
+on d.iddocente = pd.iddocente
+inner join plan p
+on p.idplan = pd.idplan
+inner join ASIGNATURA_GRUPO ga
+on ga.IDASIGNATURA_GRUPO = agpd.IDASIGNATURA_GRUPO
+inner join grupo g
+on g.idgrupo = ga.idgrupo
+inner join asignatura a
+on a.idasignatura = ga.idasignatura
+group by e.idestudiante,e.nombre,pe.idplan, a.nombre,g.idgrupo,agpd.semestre,d.nombre,p.idplan,agpd.periodo,d.iddocente
+order by a.nombre) as tabla

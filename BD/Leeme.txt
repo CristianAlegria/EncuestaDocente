@@ -1,0 +1,4 @@
+1)la carpeta SIGED DEBE COPIARSE EN EL DISCO C:
+2)EL NOMBRE DE LA BASE DE DATOS SE LLAMA:ProyectoEncuestaDocentePracticasDePruebas
+nota:Recuerda colocarle tu contraseña de postgres a la clase conexion del proyecto java.
+    Este proyecto le falta documentar el codigo.

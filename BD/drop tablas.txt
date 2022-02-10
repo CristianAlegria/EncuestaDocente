@@ -1,0 +1,10 @@
+drop table   matricula
+drop table   ASIGNATURA_GRUPO_PLAN_DOCENTE
+drop table   estudiante_plan
+drop table  plan_docente
+drop table  asignatura_grupo
+drop table  docente
+drop table  plan
+drop table asignatura
+drop table  grupo
+drop table   estudiante
